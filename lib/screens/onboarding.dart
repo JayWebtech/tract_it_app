@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tract_it_app/screens/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tract_it_app/screens/signup.dart';
 import '../widget/onboarding_slide.dart';
 
 class Onboarding extends StatefulWidget {
@@ -37,10 +38,14 @@ class _OnboardingState extends State<Onboarding> {
             description:
                 'Thinking of buying a used phone? Check the IMEI with Track It to make sure it hasn’t been reported as stolen. Avoid unwanted surprises and make smart purchases.',
             buttonText: 'Get Started',
-            onButtonPressed: () {
+            onButtonPressed: () async {
+              int isViewed = 0;
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              await prefs.setInt('onBoard', isViewed);
+              // ignore: use_build_context_synchronously
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const Login()),
+                MaterialPageRoute(builder: (context) => const SignUp()),
               );
             },
           ),

@@ -1,8 +1,15 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tract_it_app/screens/dashboard.dart';
+import 'package:tract_it_app/screens/homescreen.dart';
 import 'package:tract_it_app/screens/onboarding.dart';
 
-void main() {
+int? isviewed;
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  isviewed = prefs.getInt('onBoard');
   runApp(const MyApp());
 }
 
@@ -46,7 +53,8 @@ class SplashScreenPage extends StatelessWidget {
               ),
             ],
           ),
-          nextScreen: const Onboarding(),
+          nextScreen:  isviewed != 0 ? const Onboarding() :  HomeScreen(),
+          //nextScreen: const Onboarding(),
           splashTransition: SplashTransition.scaleTransition,
         ),
       ],

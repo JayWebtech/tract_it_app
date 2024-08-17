@@ -7,3 +7,4 @@ const Color onboardBGColor = Color(0xFFf2f8fa);
 const Color textColor = Color(0xFF353535);
 const Color faintTextColor = Color(0xFF999999);
 const Color borderColor = Color(0xFFECECEC);
+const Color bgColor = Color(0xFFFBFBFB);

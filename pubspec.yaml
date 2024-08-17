@@ -40,6 +40,8 @@ dependencies:
   lucide_icons: ^0.257.0
   provider: ^6.1.2
   fluentui_system_icons: ^1.1.252
+  shared_preferences: ^2.2.2
+  awesome_bottom_bar: ^1.2.4
 
 dev_dependencies:
   flutter_test:
